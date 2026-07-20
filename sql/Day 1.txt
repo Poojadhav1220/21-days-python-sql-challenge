@@ -1,0 +1,27 @@
+1 Using an EMPLOYEE table (EMPID, EMPNAME, DEPTID, SAL, EMAIL), write a query to list
+names of employees whose name starts with 'P'.
+
+- SELECT EMPNAME
+  FROM EMPLOYEE 
+  WHERE EMPNAME LIKE 'P%';
+
+
+2 Write a query to list names of employees whose name ends with 'a'.
+ - SELECT EMPNAME
+  FROM EMPLOYEE
+  WHERE EMPNAME LIKE '%a';
+
+3 Write a query to find employees whose name has 'h' as the 3rd character.
+   SELECT EMPNAME 
+   FROM EMPLOYEE
+   WHERE EMPNAME LIKE '--h%';
+
+4 Write a query to list employees whose EMAIL contains 'gmail'.
+   SELECT EMPNAME
+   FROM EMPLOYEE
+   WHERE EMAIL LIKE '%gmail';
+
+5 Write a query to list employee names and salaries for employees earning more than 3000
+   SELECT EMPNAME, SAL
+   FROM EMPLOYEE
+   WHERE SAL > 3000;
