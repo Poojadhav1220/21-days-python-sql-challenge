@@ -1,0 +1,27 @@
+1 Write a query to find the average salary of all employees, rounded to the nearest whole number.
+  SELECT  ROUND(AVG(SAL))
+  FROM EMPLOYEE;
+
+2 Write a query to find the total salary paid to permanent employees and, separately, to
+non-permanent employees (two queries, using an ISPERMANENT column).
+ SELECT  SUM(SAL)
+ FROM EMPLOYEE
+ WHERE ISPERMANENT = 'YES';
+
+ SELECT  SUM(SAL)
+ FROM EMPLOYEE
+ WHERE ISPERMANENT = 'NO';
+
+3 Given SAL as monthly salary, write a query that outputs monthly salary, annual salary (x12), and
+annual salary with a 25% hike, for every employee.
+ SELECT SAL, SAL*12 AS ANNUAL_SAL, SAL*12*1.25
+ FROM EMPLOYEE
+
+4 Write a query to count how many employees earn more than 5000.
+ SELECT COUNT(*)
+ FROM EMPLOYEE
+ WHERE SAL > 5000;
+
+5 Write a query to find the highest and lowest salary in the EMPLOYEE table in a single query.
+ SELECT MAX(SAL) AS MAX_SAL, MIN(SAL) AS MIN_SAL
+ FROM EMPLOYEE;
