@@ -1,0 +1,42 @@
+1 Write a query to find the department name for a given DeptID, e.g. 'D-102', using a subquery on
+EMPLOYEE to find who belongs to it.
+ SELECT DEPTNAME
+ FROM DEPT
+ WHERE DEPTID = ( SELECT DEPTID 
+                                 FROM EMPLOYEE
+                                 WHERE DEPTID = 'D-102');
+
+2 Write a query to display the department name of employees whose salary is the maximum salary
+that is still less than 3000.
+ SELECT  DEPTNAME
+ FROM DEPT 
+ WHERE DEPTID IN ( SELECT DEPTID
+				  FROM EMPLOYEE
+                                  WHERE SALARY IN ( SELECT MAX(SALARY)
+							      	    FROM EMPLOYEE
+							            WHERE SALARY < 3000));
+
+
+3 Write a query to display the last employee record according to EMPID(i.e. the row with the
+maximum EMPNO), using a subquery.
+ SELECT *
+ FROM EMPLOYEE
+ WHERE EMPID IN ( SELECT MAX(EMPID)
+				 FROM EMPLOYEE);
+
+
+4 Write a query to find the name of the employee working under a given manager, e.g. 'Abhishek'
+(hint: match on a manager-ID column via subquery).
+  SELECT ENAME
+  FROM EMPLOYEE 
+  WHERE MGR IN ( SELECT EMPID 
+			       FROM EMPLOYEE
+			       WHERE ENAME='ABHISHEK'
+  
+
+5 Write a query to find employees whose salary is greater than the average salary of department 30
+  SELECT ENAME , SALARY
+  FROM EMPLOYEE
+  WHERE SALARY > (SELECT AVG(SALARY)
+                           	  FROM EMPLOYEE
+                          	  WHERE DEPTID = 30;
