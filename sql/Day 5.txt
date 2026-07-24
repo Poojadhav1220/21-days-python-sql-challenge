@@ -1,0 +1,54 @@
+1 Write a query to list employee names who work in department 'D-104' or 'D-102', using a subquery
+with IN.
+ SELECT EMPNAME
+ FROM EMPLOYEE
+ WHERE DEPTID IN ( SELECT DEPTID 
+                                  FROM DEPT
+                                  WHERE DEPTID IN (40, 20)); 
+
+2 Write a query to list employee names working in the 'Development' department.
+ SELECT EMPNAME
+ FROM EMPLOYEE
+ WHERE DEPTID IN ( SELECT DEPTID 
+				  FROM DEPT
+                                  WHERE DEPTNAME = 'DEVELOPMENT');
+
+3 Write a query to count employees in the 'Research' department whose salary is less than at least
+one salary in department 30 (hint: use SAL < ANY).
+ SELECT COUNT(*)
+ FROM EMPLOYEE
+ WHERE DEPTID IN ( SELECT DEPTID
+                                  FROM DEPT
+                                  WHERE DEPTNAME = 'RESERACH')  AND SAL < ANY ( SELECT SALARY
+                                                                                                                          FROM EMPLOYEE
+															  WHERE DEPTID = 30);
+
+4 Write a query to find employees earning more than any employee whose job is 'ANALYST' (use >
+ANY).
+ SELECT EMPNAME
+ FROM EMPLOYEE
+ WHERE SAL > ANY  ( SELECT SALARY
+				    FROM EMPLOYEE
+				    WHERE JOB = 'ANALYST');				  
+
+5 Write a query to list names of clients from India, then a second query listing employees working on
+projects for Indian clients (nested subquery, 2 levels deep).
+  SELECT CLIENTNAME
+  FROM CLIENTTABLE
+  WHERE CID IN ( SELECT CID 
+                            FROM COUNTRY
+                            WHERE CNAME = 'INDIA');
+ 
+
+ SELECT EMPNAME
+ FROM EMPLOYEE
+ WHERE EMPID IN ( SELECT EMPID
+				 FROM EMPPROJECT
+				 WHERE 
+
+
+
+
+
+
+
