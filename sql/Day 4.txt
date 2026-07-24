@@ -4,39 +4,41 @@ EMPLOYEE to find who belongs to it.
  FROM DEPT
  WHERE DEPTID = ( SELECT DEPTID 
                                  FROM EMPLOYEE
-                                 WHERE DEPTID = 'D-102');
+                                 WHERE DEPTID = 10);
 
 2 Write a query to display the department name of employees whose salary is the maximum salary
 that is still less than 3000.
  SELECT  DEPTNAME
  FROM DEPT 
- WHERE DEPTID IN ( SELECT DEPTID
+ WHERE DEPTID = ( SELECT DEPTID
 				  FROM EMPLOYEE
-                                  WHERE SALARY IN ( SELECT MAX(SALARY)
-							      	    FROM EMPLOYEE
-							            WHERE SALARY < 3000));
+                                  WHERE SAL = ( SELECT MAX(SAL)
+							     FROM EMPLOYEE
+							     WHERE SAL < 3000 ));
 
 
 3 Write a query to display the last employee record according to EMPID(i.e. the row with the
 maximum EMPNO), using a subquery.
  SELECT *
  FROM EMPLOYEE
- WHERE EMPID IN ( SELECT MAX(EMPID)
+ WHERE EMPID = ( SELECT MAX(EMPID)
 				 FROM EMPLOYEE);
 
 
 4 Write a query to find the name of the employee working under a given manager, e.g. 'Abhishek'
 (hint: match on a manager-ID column via subquery).
-  SELECT ENAME
+  SELECT EMPNAME
   FROM EMPLOYEE 
-  WHERE MGR IN ( SELECT EMPID 
+  WHERE MGR = ( SELECT EMPID 
 			       FROM EMPLOYEE
-			       WHERE ENAME='ABHISHEK'
+			       WHERE ENAME='ABHISHEK');
   
 
 5 Write a query to find employees whose salary is greater than the average salary of department 30
-  SELECT ENAME , SALARY
+  SELECT EMPNAME , SAL
   FROM EMPLOYEE
-  WHERE SALARY > (SELECT AVG(SALARY)
-                           	  FROM EMPLOYEE
-                          	  WHERE DEPTID = 30;
+  WHERE SAL > (SELECT AVG(SAL)
+                            FROM EMPLOYEE
+                            WHERE DEPTID = 30);
+
+

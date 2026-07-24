@@ -1,13 +1,13 @@
 #write a function is_prime that returns true/false
-# def is_prime(n):
-    # if n<=1:
-        # return False
-    # for i in range(2,int(n**0.5)+1):
-        # if n%i==0:
-            # return False
-    # return True
-# print(is_prime(7))
-# print(is_prime(4))
+def is_prime(n):
+    if n<=1:
+        return False
+    for i in range(2,int(n**0.5)+1):
+        if n%i==0:
+            return False
+    return True
+print(is_prime(7))
+print(is_prime(4))
 
 
 '''Write a function greet(name, greeting='Hello') that returns a greeting string, demonstrating a
@@ -30,8 +30,10 @@ print(sum_all(10,20,30))
 '''Write a function describe_person(**kwargs) that accepts any number of keyword arguments and
 prints them as 'key: value' pair'''
 def describe_person(**kwargs):
+    result=[]
     for key,value in kwargs.items():
-        return f'{key}: {value}'      
+        result.append(f'{key}: {value}')
+    return '\n'.join(result)
 print(describe_person( name='Pooja', age=22, city='Mumbai'))
 
 '''Write a function factorial(n) using a loop (not recursion), and a separate function
@@ -44,7 +46,7 @@ def factorial(n):
 print(factorial(5))
 
 def factorial_recursive(n):
-    if n==1:
+    if n<=1:
         return 1
     return n * factorial_recursive(n-1)
 print(factorial_recursive(5))
