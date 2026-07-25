@@ -1,0 +1,42 @@
+1 Write a query to create a PROJECT table with columns ProjectID (unique, not null) and Duration
+(not null, numeric).
+ CREATE TABLE PROJECT
+ (
+	PROJECTID VARCHAR(5) UNIQUE NOT NULL,
+	DURATION  NUMBER(5) NOT NULL
+);
+
+2 Write a query to drop a column called DEPT_OFF from an existing EMPDEPT table.
+ ALTER TABLE EMPDEPT
+ DROP COLUMN DEPT_OFF;
+
+3 Write a query to create a STUDENT table with 4 columns of your choice, then insert 3 rows.
+ CREATE TABLE STUDENT
+ (
+	ID NUMBER(3) PRIMARY KEY,
+	NAME VARCHAR(15) NOT NULL,
+	PHONE NUMBER(10) NOT NULL,
+	DEPT VARCHAR(15) 
+);
+
+ INSERT INTO STUDENT
+ VALUES(101, 'POOJA', 4678901234, 'COMPUTER');
+
+ INSERT INTO STUDENT
+ VALUES(102, 'ADITYA', 4978901234, 'AIML');
+
+ INSERT INTO STUDENT
+ VALUES(103, 'MEERA', 4876901234, 'IT');
+
+
+
+4 Using the STUDENT table above, write an UPDATE query to change one value in the 2nd column.
+ UPDATE STUDENT
+ SET NAME = 'SAI'
+ WHERE ID = 103;
+ 
+
+5 Write a DELETE query to remove the 3rd row you inserted (by a WHERE condition, not by row
+number).
+ DELETE FROM STUDENT
+ WHERE ID = 103;

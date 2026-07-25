@@ -27,7 +27,7 @@ one salary in department 30 (hint: use SAL < ANY).
 ANY).
  SELECT EMPNAME
  FROM EMPLOYEE
- WHERE SAL > ANY  ( SELECT SALARY
+ WHERE SAL > ANY  ( SELECT SAL
 				    FROM EMPLOYEE
 				    WHERE JOB = 'ANALYST');				  
 
