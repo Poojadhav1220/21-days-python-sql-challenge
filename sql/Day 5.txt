@@ -11,7 +11,7 @@ with IN.
  FROM EMPLOYEE
  WHERE DEPTID IN ( SELECT DEPTID 
 				  FROM DEPT
-                                  WHERE DEPTNAME = 'DEVELOPMENT');
+                                  WHERE DEPTNAME = 'RESEARCH');
 
 3 Write a query to count employees in the 'Research' department whose salary is less than at least
 one salary in department 30 (hint: use SAL < ANY).
@@ -19,7 +19,7 @@ one salary in department 30 (hint: use SAL < ANY).
  FROM EMPLOYEE
  WHERE DEPTID IN ( SELECT DEPTID
                                   FROM DEPT
-                                  WHERE DEPTNAME = 'RESERACH')  AND SAL < ANY ( SELECT SALARY
+                                  WHERE DEPTNAME = 'RESEARCH')  AND SAL < ANY ( SELECT SAL
                                                                                                                           FROM EMPLOYEE
 															  WHERE DEPTID = 30);
 
@@ -44,7 +44,11 @@ projects for Indian clients (nested subquery, 2 levels deep).
  FROM EMPLOYEE
  WHERE EMPID IN ( SELECT EMPID
 				 FROM EMPPROJECT
-				 WHERE 
+				 WHERE CLIENTID IN ( SELECT CLIENTID
+									FROM CLIENTTABLE
+									WHERE CID IN ( SELECT CID 
+												     FROM COUNTRY
+												     WHERE CNAME = 'INDIA' )));
 
 
 
