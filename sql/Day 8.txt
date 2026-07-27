@@ -1,0 +1,24 @@
+1 Write a query to display employee names in uppercase.
+ SELECT UPPER(EMPNAME)
+ FROM EMPLOYEE;
+
+2 Write a query to retrieve the first 3 characters of each employee's name.
+ SELECT SUBSTR(EMPNAME, 1, 3)
+ FROM EMPLOYEE;
+
+3 Write a query to display EmpName and DeptName combined into a single column called 'EmpDetails', separated by a '-'.
+ SELECT CONCAT(E.EMPNAME,'-', D.DEPTNAME) AS EMPDETAILS
+ FROM EMPLOYEE E INNER JOIN DEPT D
+ ON E.DEPTID = D.DEPTID;
+
+4 Write a query to find employees whose name contains 'A' at least twice (pattern: '%A%A%').
+ SELECT EMPNAME
+ FROM EMPLOYEE
+ WHERE EMPNAME LIKE '%A%A%';
+
+5 Write a query to find employee names and salaries where the department name contains the letter 'O'.
+ SELECT EMPNAME, SAL
+ FROM EMPLOYEE
+ WHERE DEPTID IN ( SELECT DEPTID 
+				  FROM DEPT
+				  WHERE DEPTNAME LIKE '%O%');
